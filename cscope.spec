@@ -27,8 +27,8 @@ okre¶lonych elementów.
 
 %build
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 %{__make}
 
