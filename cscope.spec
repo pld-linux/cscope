@@ -26,7 +26,8 @@ okre¶lonych elementów.
 %setup -q
 
 %build
-aclocal
+rm -f missing
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -38,13 +39,11 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf TODO ChangeLog AUTHORS README NEWS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc TODO ChangeLog AUTHORS README NEWS
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
