@@ -1,54 +1,42 @@
-Summary: cscope is an interactive, screen-oriented tool that allows the user to browse through C source files for specified elements of code.
-Name: cscope
-Version: 15.1
-Release: 1
-Copyright: BSD
-Group: Development/Tools
-Source: cscope-15.1.tar.gz
-Buildroot: /tmp/%{name}-%{version}
+Summary:	cscope - an interactive, screen-oriented tool for browse C source
+Name:		cscope
+Version:	15.1
+Release:	1
+License:	BSD
+Group:		Development/Tools
+Group(de):	Entwicklung/Werkzeuge
+Group(fr):	Development/Outils
+Group(pl):	Programowanie/Narzêdzia
+Source0:	ftp://download.sourceforge.net/pub/sourceforge/cscope/%{name}-%{version}.tar.gz
+URL:		http://cscope.sourceforge.net/
+BuildRequires:	flex
+BuildRequires:	ncurses-devel
+Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-cscope is an interactive, screen-oriented tool that allows the user to browse through C source files for specified elements of code.
+cscope is an interactive, screen-oriented tool that allows the user to
+browse through C source files for specified elements of code.
 
 %prep
-%setup
+%setup -q
 
 %build
-./configure
-make
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/bin
-mkdir -p $RPM_BUILD_ROOT/usr/man/man1
 
-install -s -m 755 src/cscope $RPM_BUILD_ROOT/usr/bin/cscope
-install -m 755 doc/cscope.1 $RPM_BUILD_ROOT/usr/man/man1/cscope.1
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf TODO ChangeLog AUTHORS README NEWS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root)
-%doc TODO COPYING ChangeLog AUTHORS README NEWS INSTALL
-
-/usr/bin/cscope
-/usr/man/man1/cscope.1
-
-%changelog
-* Wed Nov 20 2000 Cscope development team
-- Version 15.1 release
-- New menu and line matching interface
-- Support for up to 62 (up from 9) matching lines on screen
-- Numerous fixes
-- Updated documentation
-* Tue May 15 2000 Cscope development team
-- Version 15.0bl2 (build 2) pre-alpha release
-- Fixes and enhancements
-- Updated documentation
-- Autoconf/automake support
-- directory restructuring
-* Sun Apr 16 2000 Petr Sorfa <petrs@sco.com>
-- Initial Open Source release
-- Ported to GNU environment
-- Created rpm package
+%defattr(644,root,root,755)
+%doc *.gz
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
