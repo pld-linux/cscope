@@ -5,7 +5,7 @@ Version:	15.4
 Release:	1
 License:	BSD
 Group:		Development/Tools
-Source0:	ftp://download.sourceforge.net/pub/sourceforge/cscope/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/cscope/%{name}-%{version}.tar.gz
 URL:		http://cscope.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
