@@ -2,7 +2,7 @@ Summary:	cscope - an interactive, screen-oriented tool for browse C source
 Summary(pl):	cscope - interaktywny program do przeszukiwania kodu w jêzyku C
 Name:		cscope
 Version:	15.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/cscope/%{name}-%{version}.tar.gz
