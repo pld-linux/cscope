@@ -1,6 +1,6 @@
 Summary:	cscope - an interactive, screen-oriented tool for browse C source
 Name:		cscope
-Version:	15.1
+Version:	15.3
 Release:	1
 License:	BSD
 Group:		Development/Tools
@@ -9,6 +9,8 @@ Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/cscope/%{name}-%{version}.tar.gz
 URL:		http://cscope.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	flex
 BuildRequires:	ncurses-devel
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -21,6 +23,9 @@ browse through C source files for specified elements of code.
 %setup -q
 
 %build
+aclocal
+autoconf
+automake -a -c
 %configure
 %{__make}
 
