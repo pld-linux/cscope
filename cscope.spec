@@ -6,6 +6,7 @@ Release:	1
 License:	BSD
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/cscope/%{name}-%{version}.tar.gz
+# Source0-md5:	d46d39f39e5f493161cb4c476a27cf8e
 URL:		http://cscope.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
