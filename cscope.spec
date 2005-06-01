@@ -11,6 +11,7 @@ Patch0:		%{name}-CAN-2004-0996.patch
 URL:		http://cscope.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
